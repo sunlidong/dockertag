@@ -5,35 +5,44 @@ WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
 
 #当前目录所有文件copy进去
 COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
-COPY ./crypto-config/ordererOrganizations/newpower.com/orderers/orderer1.newpower.com/msp /var/hyperledger/orderer/msp
-COPY ./crypto-config/ordererOrganizations/newpower.com/orderers/orderer1.newpower.com/tls /var/hyperledger/orderer/tls
+COPY ./crypto-config/peerOrganizations/org2.newpower.com/peers/peer0.org2.newpower.com/msp /etc/hyperledger/fabric/msp
+COPY ./crypto-config/peerOrganizations/org2.newpower.com/peers/peer0.org2.newpower.com/tls /etc/hyperledger/fabric/tls
+#
+COPY /var/run/:/host/var/run/
+COPY ./chaincode/:/opt/gopath/src/github.com/chaincode
+COPY ${GOPATH}/src/github.com/hyperledger:/opt/gopath/src/github.com/hyperledger
+COPY ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto-config
+COPY ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
 
 #设置环境变量
-ENV CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
-ENV CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
-ENV CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
-ENV CORE_PEER_PROFILE_ENABLED=true
-ENV CORE_PEER_GOSSIP_ORGLEADER=false
-ENV CORE_PEER_LOCALMSPID=Org2MSP
 ENV CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-ENV CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
 ENV FABRIC_LOGGING_SPEC=INFO
-ENV CORE_PEER_LISTENADDRESS=0.0.0.0:8051
-ENV PWD=/opt/gopath/src/github.com/hyperledger/fabric/peer
-ENV CORE_PEER_TLS_ENABLED=true
 ENV CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=neet_byfn
-ENV CORE_PEER_ID=peer0.org2.newpower.com
-ENV CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.newpower.com:8051
 ENV CORE_CHAINCODE_EXECUTETIMEOUT=300s
 ENV FABRIC_CFG_PATH=/etc/hyperledger/fabric
 ENV GODEBUG=netdns=go
+ENV GOPATH=/opt/gopath
+
+ENV CORE_PEER_ID=peer0.org2.newpower.com
+ENV CORE_PEER_LOCALMSPID=Org2MSP
+
 ENV CORE_PEER_ADDRESS=peer0.org2.newpower.com:8051
-ENV CORE_PEER_GOSSIP_USELEADERELECTION=true
 ENV CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org2.newpower.com:8151
+ENV CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.newpower.com:8051
+ENV CORE_PEER_LISTENADDRESS=0.0.0.0:8051
+
 ENV CORE_PEER_CHAINCODEADDRESS=peer0.org2.newpower.com:8052
+ENV CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
 
+ENV CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+ENV CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+ENV CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
 
-#启动
+ENV CORE_PEER_PROFILE_ENABLED=true
+ENV CORE_PEER_GOSSIP_USELEADERELECTION=true
+ENV CORE_PEER_TLS_ENABLED=true
+ENV CORE_PEER_GOSSIP_ORGLEADER=false
+
 
 #端口 
 EXPOSE 8051
@@ -41,5 +50,8 @@ EXPOSE 8052
 EXPOSE 8151
 
 #启动
-ENTRYPOINT ["peer node start"]
+ENTRYPOINT ["peer"]
+
+#cmd
+CMD ["node","start"]
 

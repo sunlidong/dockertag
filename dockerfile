@@ -18,3 +18,5 @@ EXPOSE 10082
 #启动
 ENTRYPOINT ["./dog"]
 
+
+
