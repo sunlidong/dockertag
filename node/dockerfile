@@ -8,11 +8,11 @@ COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.
 COPY ./crypto-config/peerOrganizations/org2.newpower.com/peers/peer0.org2.newpower.com/msp /etc/hyperledger/fabric/msp
 COPY ./crypto-config/peerOrganizations/org2.newpower.com/peers/peer0.org2.newpower.com/tls /etc/hyperledger/fabric/tls
 #
-COPY /var/run/:/host/var/run/
-COPY ./chaincode/:/opt/gopath/src/github.com/chaincode
-COPY ${GOPATH}/src/github.com/hyperledger:/opt/gopath/src/github.com/hyperledger
-COPY ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto-config
-COPY ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+COPY /var/run/ /host/var/run/
+COPY ./chaincode/ /opt/gopath/src/github.com/chaincode
+COPY ${GOPATH}/src/github.com/hyperledger /opt/gopath/src/github.com/hyperledger
+COPY ./crypto-config /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto-config
+COPY ./channel-artifacts /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
 
 #设置环境变量
 ENV CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
