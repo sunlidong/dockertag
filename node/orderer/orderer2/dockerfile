@@ -4,9 +4,9 @@ FROM hyperledger/fabric-orderer:1.4.2
 WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
 
 #当前目录所有文件copy进去
-COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
-COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/msp /var/hyperledger/orderer/msp
-COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/tls /var/hyperledger/orderer/tls
+COPY /mnt/d/gopath/src/dockertag/channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
+COPY /mnt/d/gopath/src/dockertag/crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/msp /var/hyperledger/orderer/msp
+COPY /mnt/d/gopath/src/dockertag/crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/tls /var/hyperledger/orderer/tls
 
 #设置环境变量
 
