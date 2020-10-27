@@ -1,0 +1,38 @@
+FROM hyperledger/fabric-orderer:1.4.2
+
+#进入工作目录
+WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
+
+#当前目录所有文件copy进去
+COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
+COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/msp /var/hyperledger/orderer/msp
+COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/tls /var/hyperledger/orderer/tls
+
+#设置环境变量
+
+ENV GODEBUG=netdns=go
+ENV FABRIC_LOGGING_SPEC=INFO
+ENV ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+ENV ORDERER_GENERAL_GENESISMETHOD=file
+ENV ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+ENV ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+ENV ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+ENV ORDERER_GENERAL_TLS_ENABLED=true
+ENV ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+ENV ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+ENV ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+ENV ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+ENV ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+ENV ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+
+#LISTENPORT
+ENV ORDERER_GENERAL_LISTENPORT=7450
+
+#端口 
+EXPOSE 7450
+
+#启动
+ENTRYPOINT ["orderer"]
+
+#cmd
+

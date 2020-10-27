@@ -1,0 +1,50 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+OrdererOrgs:
+
+  - Name: Orderer
+    Domain: testpower.com
+
+    Specs:
+      - Hostname: orderer1
+      - Hostname: orderer2
+      - Hostname: orderer3
+      - Hostname: orderer4
+      - Hostname: orderer5
+
+PeerOrgs:
+
+  - Name: Org1
+    Domain: org1.testpower.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 4
+
+  - Name: Org2
+    Domain: org2.testpower.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 4
+
+  - Name: Org3
+    Domain: org3.testpower.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 4
+  
+  - Name: Org4
+    Domain: org4.testpower.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 4

@@ -6,9 +6,9 @@ WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
 #创世快
 COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
 #msp
-COPY ./crypto-config/peerOrganizations/org2.testpower.com/peers/peer0.org2.testpower.com/msp /etc/hyperledger/fabric/msp
+COPY ./crypto-config/peerOrganizations/org4.testpower.com/peers/peer1.org4.testpower.com/msp /etc/hyperledger/fabric/msp
 #tls
-COPY ./crypto-config/peerOrganizations/org2.testpower.com/peers/peer0.org2.testpower.com/tls /etc/hyperledger/fabric/tls
+COPY ./crypto-config/peerOrganizations/org4.testpower.com/peers/peer1.org4.testpower.com/tls /etc/hyperledger/fabric/tls
 
 #设置环境变量 
 ENV CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -19,16 +19,16 @@ ENV FABRIC_CFG_PATH=/etc/hyperledger/fabric
 ENV GODEBUG=netdns=go
 ENV GOPATH=/opt/gopath
 #修改参数
-ENV CORE_PEER_ID=peer0.org2.testpower.com
-ENV CORE_PEER_LOCALMSPID=Org2MSP
+ENV CORE_PEER_ID=peer1.org4.testpower.com
+ENV CORE_PEER_LOCALMSPID=Org4MSP
 
-ENV CORE_PEER_LISTENADDRESS=0.0.0.0:8051
-ENV CORE_PEER_ADDRESS=peer0.org2.testpower.com:8051
-ENV CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.testpower.com:8051
-ENV CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org2.testpower.com:8151
+ENV CORE_PEER_LISTENADDRESS=0.0.0.0:4151
+ENV CORE_PEER_ADDRESS=peer1.org4.testpower.com:4151
+ENV CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org4.testpower.com:4151
+ENV CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org4.testpower.com:4051
 
-ENV CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
-ENV CORE_PEER_CHAINCODEADDRESS=peer0.org2.testpower.com:8052
+ENV CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:4152
+ENV CORE_PEER_CHAINCODEADDRESS=peer1.org4.testpower.com:4152
 
 
 ENV CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
@@ -41,9 +41,9 @@ ENV CORE_PEER_TLS_ENABLED=true
 ENV CORE_PEER_GOSSIP_ORGLEADER=false
 
 #端口 
-EXPOSE 8051
-EXPOSE 8052
-EXPOSE 8151
+EXPOSE 4151
+EXPOSE 4152
+EXPOSE 4051
 
 #启动
 ENTRYPOINT ["peer"]
