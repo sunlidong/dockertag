@@ -4,7 +4,7 @@ FROM hyperledger/fabric-peer:1.4.2
 WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
 
 #创世快
-COPY /mnt/d/gopath/src/dockertag/channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
+COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
 #msp
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer3.org1.testpower.com/msp /etc/hyperledger/fabric/msp
 #tls
