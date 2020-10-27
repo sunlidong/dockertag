@@ -4,11 +4,11 @@ FROM hyperledger/fabric-peer:1.4.2
 WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
 
 #创世快
-COPY $GOPATH/src/dockertag/channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
+COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
 #msp
-COPY $GOPATH/src/dockertag/crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/msp /etc/hyperledger/fabric/msp
+COPY ./crypto-config/peerOrganizations/org2.testpower.com/peers/peer0.org1.testpower.com/msp /etc/hyperledger/fabric/msp
 #tls
-COPY $GOPATH/src/dockertag/crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls /etc/hyperledger/fabric/tls
+COPY ./crypto-config/peerOrganizations/org2.testpower.com/peers/peer0.org1.testpower.com/tls /etc/hyperledger/fabric/tls
 
 #设置环境变量 
 ENV CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
