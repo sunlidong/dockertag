@@ -11,7 +11,7 @@ COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpo
 #设置环境变量
 
 ENV GODEBUG=netdns=go
-ENV FABRIC_LOGGING_SPEC=INFO
+ENV FABRIC_LOGGING_SPEC=DEBUG
 ENV ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
 ENV ORDERER_GENERAL_GENESISMETHOD=file
 ENV ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
