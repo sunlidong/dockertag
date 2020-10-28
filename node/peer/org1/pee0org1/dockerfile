@@ -16,7 +16,6 @@ COPY ./channel-artifacts /opt/gopath/src/github.com/hyperledger/fabric/peer
 
 
 #设置环境变量 
-ENV CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
 ENV FABRIC_LOGGING_SPEC=DEBUG
 ENV CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=neet_byfn
 ENV CORE_CHAINCODE_EXECUTETIMEOUT=300s
