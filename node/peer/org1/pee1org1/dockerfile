@@ -5,7 +5,7 @@ WORKDIR /opt/gopath/src/github.com/hyperledger/fabric/peer
 COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer1.org1.testpower.com/msp /etc/hyperledger/fabric/msp
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer1.org1.testpower.com/tls /etc/hyperledger/fabric/tls
-COPY ./crypto-config//peerOrganizations/org1.testpower.com/users /etc/hyperledger/fabric/users
+COPY ./crypto-config/peerOrganizations/org1.testpower.com/users /etc/hyperledger/fabric/users
 COPY ./crypto-config/ /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto
 
 #设置环境变量 
@@ -33,7 +33,7 @@ ENV CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:1152
 ENV CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org1.testpower.com:1151
 ENV CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.testpower.com:1051
 ENV CORE_PEER_LOCALMSPID=Org1MSP
-# ENV CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/users/Admin@org1.testpower.com/msp
+ENV CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/users/User1@org1.testpower.com/msp
 
 #端口 
 EXPOSE 1151
