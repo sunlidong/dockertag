@@ -10,7 +10,7 @@ COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testp
 #tls
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls /etc/hyperledger/fabric/tls
 
-COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/users /etc/hyperledger/fabric/users
+COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/users /etc/hyperledger/fabric
 
 COPY ./channel-artifacts /opt/gopath/src/github.com/hyperledger/fabric/peer
 
