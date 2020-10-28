@@ -21,9 +21,9 @@ ENV CORE_PEER_PROFILE_ENABLED=true
 # ENV CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
 # ENV CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
 # ENV CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
-# ENV CORE_PEER_TLS_CERT_FILE==/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls/server.crt
-# ENV CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls/server.key
-# ENV CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.testpower.com/users/Admin@org1.testpower.com/msp
+ENV CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls/server.crt
+ENV CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls/server.key
+ENV CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.testpower.com/users/Admin@org1.testpower.com/msp
 ENV CORE_CHAINCODE_EXECUTETIMEOUT=300s
 ENV GODEBUG=netdns=go
 
