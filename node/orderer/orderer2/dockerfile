@@ -5,8 +5,8 @@ WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
 
 #当前目录所有文件copy进去
 COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
-COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/msp /var/hyperledger/orderer/msp
-COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/tls /var/hyperledger/orderer/tls
+COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer2.testpower.com/msp /var/hyperledger/orderer/msp
+COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer2.testpower.com/tls /var/hyperledger/orderer/tls
 
 #设置环境变量
 
@@ -29,7 +29,11 @@ ENV ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
 ENV ORDERER_GENERAL_LISTENPORT=8450
 
 #端口 
+EXPOSE 7450
 EXPOSE 8450
+EXPOSE 9450
+EXPOSE 10450
+EXPOSE 11450
 
 #启动
 ENTRYPOINT ["orderer"]
