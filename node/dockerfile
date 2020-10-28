@@ -14,7 +14,7 @@ COPY ./crypto-config/peerOrganizations/org2.testpower.com/peers/peer0.org2.testp
 #设置环境变量 
 ENV CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
 ENV FABRIC_LOGGING_SPEC=INFO
-ENV CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=neet_byfn
+ENV CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mybridge
 ENV CORE_CHAINCODE_EXECUTETIMEOUT=300s
 ENV FABRIC_CFG_PATH=/etc/hyperledger/fabric
 ENV GODEBUG=netdns=go
