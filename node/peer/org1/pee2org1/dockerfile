@@ -1,7 +1,7 @@
 FROM hyperledger/fabric-peer:1.4.2
 
 #进入工作目录
-WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
+WORKDIR /opt/gopath/src/github.com/hyperledger/fabric/peer
 
 #创世快
 COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block

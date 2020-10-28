@@ -1,7 +1,7 @@
 FROM hyperledger/fabric-peer:1.4.2
 
 #进入工作目录
-WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
+WORKDIR /opt/gopath/src/github.com/hyperledger/fabric/peer
 
 #创世快
 COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
@@ -12,7 +12,7 @@ COPY ./crypto-config/peerOrganizations/org4.testpower.com/peers/peer1.org4.testp
 
 #设置环境变量 
 ENV CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-ENV FABRIC_LOGGING_SPEC=INFO
+ENV FABRIC_LOGGING_SPEC=DEBUG
 ENV CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=neet_byfn
 ENV CORE_CHAINCODE_EXECUTETIMEOUT=300s
 ENV FABRIC_CFG_PATH=/etc/hyperledger/fabric
