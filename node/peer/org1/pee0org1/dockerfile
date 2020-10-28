@@ -10,6 +10,8 @@ COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testp
 #tls
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls /etc/hyperledger/fabric/tls
 
+COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/users /etc/hyperledger/fabric/users
+
 COPY ./channel-artifacts /opt/gopath/src/github.com/hyperledger/fabric/peer
 
 
@@ -37,6 +39,8 @@ ENV CORE_PEER_CHAINCODEADDRESS=peer0.org1.testpower.com:1052
 ENV CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
 ENV CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
 ENV CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+
+ENV CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/users/Admin@org1.newpower.com/msp
 
 ENV CORE_PEER_PROFILE_ENABLED=true
 ENV CORE_PEER_GOSSIP_USELEADERELECTION=true
