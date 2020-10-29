@@ -5,6 +5,7 @@ WORKDIR /opt/gopath/src/github.com/hyperledger/fabric/peer
 COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/msp /etc/hyperledger/fabric/msp
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls /etc/hyperledger/fabric/tls
+
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/users /etc/hyperledger/fabric/users
 COPY ./channel-artifacts /opt/gopath/src/github.com/hyperledger/fabric/peer
 
@@ -14,18 +15,15 @@ COPY ./crypto-config/ /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto
 ENV CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
 ENV CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mybridge
 ENV FABRIC_LOGGING_SPEC=DEBUG
-ENV CORE_PEER_TLS_ENABLED=true
+ENV CORE_PEER_TLS_ENABLED=false
 ENV CORE_PEER_GOSSIP_USELEADERELECTION=true
 ENV CORE_PEER_GOSSIP_ORGLEADER=false
 ENV CORE_PEER_PROFILE_ENABLED=true
-
+ENV FABRIC_CFG_PATH=/etc/hyperledger/fabric
 ENV CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
 ENV CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
 ENV CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
 
-# ENV CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls/server.crt
-# ENV CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls/server.key
-# ENV CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls/ca.crt
 ENV CORE_CHAINCODE_EXECUTETIMEOUT=300s
 ENV GODEBUG=netdns=go
 
