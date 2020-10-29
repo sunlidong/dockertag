@@ -5,7 +5,7 @@ WORKDIR /opt/gopath/src/github.com/hyperledger/fabric/peer
 # COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer1.org1.testpower.com/msp /etc/hyperledger/fabric/msp
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer1.org1.testpower.com/tls /etc/hyperledger/fabric/tls
-COPY ./crypto-config/peerOrganizations/org1.testpower.com/users /etc/hyperledger/fabric/users
+# COPY ./crypto-config/peerOrganizations/org1.testpower.com/users /etc/hyperledger/fabric/users
 COPY ./crypto-config/ /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto
 
 #设置环境变量 
@@ -36,8 +36,6 @@ ENV CORE_PEER_LOCALMSPID=Org1MSP
 
 #端口 
 EXPOSE 1151
-EXPOSE 1152
-EXPOSE 1051
 
 #启动
 ENTRYPOINT ["peer"]

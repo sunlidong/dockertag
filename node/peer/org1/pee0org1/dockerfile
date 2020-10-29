@@ -6,7 +6,7 @@ COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/msp /etc/hyperledger/fabric/msp
 COPY ./crypto-config/peerOrganizations/org1.testpower.com/peers/peer0.org1.testpower.com/tls /etc/hyperledger/fabric/tls
 
-COPY ./crypto-config/peerOrganizations/org1.testpower.com/users /etc/hyperledger/fabric/users
+# COPY ./crypto-config/peerOrganizations/org1.testpower.com/users /etc/hyperledger/fabric/users
 COPY ./channel-artifacts /opt/gopath/src/github.com/hyperledger/fabric/peer
 
 COPY ./crypto-config/ /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto
@@ -39,8 +39,6 @@ ENV CORE_PEER_LOCALMSPID=Org1MSP
 
 #端口 
 EXPOSE 1051
-EXPOSE 1052
-EXPOSE 1151
 
 #启动
 ENTRYPOINT ["peer"]
