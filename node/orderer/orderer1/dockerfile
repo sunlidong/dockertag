@@ -5,8 +5,8 @@ WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
 
 #当前目录所有文件copy进去
 COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
-COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/msp /var/hyperledger/orderer/msp
-COPY ./crypto-config/ordererOrganizations/testpower.com/orderers/orderer1.testpower.com/tls /var/hyperledger/orderer/tls
+COPY ./crypto-config/ordererOrganizations/bookstore.com/orderers/orderer1.bookstore.com/msp /var/hyperledger/orderer/msp
+COPY ./crypto-config/ordererOrganizations/bookstore.com/orderers/orderer1.bookstore.com/tls /var/hyperledger/orderer/tls
 
 #设置环境变量
 
