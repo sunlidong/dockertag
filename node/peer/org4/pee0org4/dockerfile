@@ -3,9 +3,9 @@ FROM hyperledger/fabric-peer:1.4.2
 WORKDIR /opt/gopath/src/github.com/hyperledger/fabric/peer
 #创世快
 COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
-COPY ./crypto-config/peerOrganizations/org4.testpower.com/peers/peer0.org4.testpower.com/msp /etc/hyperledger/fabric/msp
-COPY ./crypto-config/peerOrganizations/org4.testpower.com/peers/peer0.org4.testpower.com/tls /etc/hyperledger/fabric/tls
-COPY ./crypto-config//peerOrganizations/org4.testpower.com/users /etc/hyperledger/fabric/users
+COPY ./crypto-config/peerOrganizations/org4.bookstore.com/peers/peer0.org4.bookstore.com/msp /etc/hyperledger/fabric/msp
+COPY ./crypto-config/peerOrganizations/org4.bookstore.com/peers/peer0.org4.bookstore.com/tls /etc/hyperledger/fabric/tls
+COPY ./crypto-config//peerOrganizations/org4.bookstore.com/users /etc/hyperledger/fabric/users
 COPY ./channel-artifacts /opt/gopath/src/github.com/hyperledger/fabric/peer
 
 #设置环境变量 
@@ -22,15 +22,15 @@ ENV CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
 ENV CORE_CHAINCODE_EXECUTETIMEOUT=300s
 ENV GODEBUG=netdns=go
 
-ENV CORE_PEER_ID=peer0.org4.testpower.com
-ENV CORE_PEER_ADDRESS=peer0.org4.testpower.com:4051
+ENV CORE_PEER_ID=peer0.org4.bookstore.com
+ENV CORE_PEER_ADDRESS=peer0.org4.bookstore.com:4051
 ENV CORE_PEER_LISTENADDRESS=0.0.0.0:4051
-ENV CORE_PEER_CHAINCODEADDRESS=peer0.org4.testpower.com:4052
+ENV CORE_PEER_CHAINCODEADDRESS=peer0.org4.bookstore.com:4052
 ENV CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:4052
-ENV CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org4.testpower.com:4051
-ENV CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org4.testpower.com:4151
+ENV CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org4.bookstore.com:4051
+ENV CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org4.bookstore.com:4151
 ENV CORE_PEER_LOCALMSPID=Org4MSP
-ENV CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/users/Admin@org4.testpower.com/msp
+ENV CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/users/Admin@org4.bookstore.com/msp
 
 #端口 
 EXPOSE 4051
