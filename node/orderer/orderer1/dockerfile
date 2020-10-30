@@ -2,7 +2,6 @@ FROM xnba-39-107-230-170-p-oo-o1:v1
 
 
 #当前目录所有文件copy进去
-# COPY ./channel-artifacts/genesis.block /var/hyperledger/orderer/orderer.genesis.block
 COPY ./crypto-config/ordererOrganizations/bookstore.com/orderers/orderer1.bookstore.com/msp /var/hyperledger/orderer/msp
 COPY ./crypto-config/ordererOrganizations/bookstore.com/orderers/orderer1.bookstore.com/tls /var/hyperledger/orderer/tls
 
@@ -14,7 +13,7 @@ WORKDIR /opt/gopath/src/github.com/hyperledger/fabric
 
 
 #端口 
-EXPOSE 7450
+EXPOSE 7050
 
 #启动
 ENTRYPOINT ["orderer"]
