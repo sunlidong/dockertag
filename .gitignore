@@ -1,2 +1,12 @@
-vendor
+/channel-artifacts/*.tx
+/channel-artifacts/*.block
+/crypto-config/*
+/ledgers
+/ledgers-backup
+/channel-artifacts/*.json
+/org3-artifacts/crypto-config/*
+/connection-*.*
+.idea
 
+./chaincode/vender/
+vendor
